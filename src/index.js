@@ -9,7 +9,7 @@ import Blogs from "./pages/Blogs";
 import Contact from "./pages/Contact";
 import AddUser from "./pages/AddUser";
 import NoPage from "./pages/404";
-import EditUser from "./pages/EditUser"
+import EditUser from "./pages/EditUser";
 // import reportWebVitals from './reportWebVitals';
 
 export default function App() {

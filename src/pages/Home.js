@@ -1,7 +1,6 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export default function Home() {
     const [data, setData] = useState([]);
@@ -10,7 +9,6 @@ export default function Home() {
         axios.get('http://localhost/api/controller.db.php?mode=users')
         .then(function(res){
             setData(res.data)
-            // console.log(res.status, res.data)
         })
         .catch(err => console.log(err));
     }, [])
@@ -23,12 +21,19 @@ export default function Home() {
             window.location.reload()
         })
         .catch(function (err) {
-            console.log(err);
+            console.log(err)
         });
     }
 
     const deleteAllUsers = () => {
-        alert("test");
+        axios.delete('http://localhost/api/controller.db.php?mode=deleteAll')
+        .then(function(res){
+            console.log(res.status)
+            window.location.reload()
+        })
+        .catch(function(err){
+            console.log(err)
+        })
     }
 
     function Items() {
@@ -78,8 +83,6 @@ export default function Home() {
                     <Link to="adduser" className="button is-success mr-1">Add User</Link>
                     <button onClick={() => deleteAllUsers()} className='button is-danger'>Delete All</button>
                 </div>
-
-
 
                 <table className="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
                     <thead>
